@@ -1,0 +1,12 @@
+.colored-column{
+    background-color: pink;
+}
+
+table thead tr{
+    background-color: lightblue;
+}
+
+table, tr, td, th{
+    border: 1px, solid, black;
+    border-collapse: collapse;
+}
