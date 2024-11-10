@@ -1,36 +1,33 @@
 const array = [
     {
         uralkodo: 'I. István',
-        esemeny: 'Koronázás',
-        evszam: '1000'
+        esemeny1: 'Koronázás',
+        esemeny2: 'Pannonhalmi apátság megalapítása',
+        evszam1: '1000',
+        evszam2: '1001'
     },
-    {
-        esemeny: 'Pannonhalmi apátság megalapítása',
-        evszam: '1001'
-    },
+    
     {
         uralkodo: 'IV. Béla',
-        esemeny: 'tatárjárás',
-        evszam: '1241-1242'
+        esemeny1: 'tatárjárás',
+        evszam1: '1241-1242'
     },
     {
         uralkodo: 'Mátyás király',
-        esemeny: 'Bécs elfoglalása',
-        evszam: '1485'
+        esemeny1: 'Bécs elfoglalása',
+        esemeny2: 'Kenyérmezei csata',
+        evszam1: '1485',
+        evszam2: '1479'
     },
-    {
-        esemeny: 'Kenyérmezei csata',
-        evszam: '1479'
-    },
+    
     {
         uralkodo: 'II. Rákóczi Ferenc',
         esemeny: 'A szabadságharc kezdete',
-        evszam: '1703'
+        esemeny1: 'A szabadságharc vége',
+        evszam1: '1703',
+        evszam2: '1711'
     },
-    {
-        esemeny: 'A szabadságharc vége',
-        evszam: '1711'
-    },
+    
 ]
 
 
@@ -62,4 +59,58 @@ Headertr.appendChild(HeaderthEsemeny);
 const HeaderthEvszam = document.createElement("th");
 HeaderthEvszam.innerHTML = "Évszám";
 Headertr.appendChild(HeaderthEvszam);
+
+const tbody = document.createElement("tbody");
+table.appendChild(tbody);
+
+
+for (person of array){
+
+    const TBodytr = document.createElement("tr");
+    tbody.appendChild(TBodytr);
+
+    const tduralkodo = document.createElement("td");
+    tduralkodo.innerHTML = person.uralkodo;
+    TBodytr.appendChild(tduralkodo);
+
+    const tdesemeny1 = document.createElement("td");
+    tdesemeny1.innerHTML = person.esemeny1;
+    TBodytr.appendChild(tdesemeny1);
+
+    if(person.esemeny2 === undefined){
+        tduralkodo.rowSpan = 2;
+    }
+
+    /*
+    const tduralkodo = document.createElement("td");
+    tduralkodo.innerHTML = person.uralkodo;
+    TBodytr.appendChild(tduralkodo);
+
+    const tdesemeny = document.createElement("td");
+    tdesemeny.innerHTML = person.esemeny1;
+    TBodytr.appendChild(tdesemeny);
+
+    if(person.esemeny2 !== undefined){
+        tduralkodo.rowSpan = 2;
+    }
+    else{
+        const tdesemeny2 = document.createElement("td");
+        tdesemeny.innerHTML = person.esemeny2;
+        TBodytr.appendChild(tdesemeny2);
+    }
+
+    const tdevszam = document.createElement("td");
+    tdevszam.innerHTML = person.evszam1;
+    TBodytr.appendChild(tdevszam);
+
+    if(person.evszam2 === undefined){
+        tduralkodo.rowSpan = 2;
+    }
+    else{
+        const tdevszam2 = document.createElement("td");
+        tdevszam.innerHTML = person.evszam2;
+        TBodytr.appendChild(tdevszam2);
+        */
+    }
+    
 
