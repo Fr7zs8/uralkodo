@@ -22,16 +22,13 @@ const array = [
     
     {
         uralkodo: 'II. Rákóczi Ferenc',
-        esemeny: 'A szabadságharc kezdete',
-        esemeny1: 'A szabadságharc vége',
+        esemeny1: 'A szabadságharc kezdete',
+        esemeny2: 'A szabadságharc vége',
         evszam1: '1703',
         evszam2: '1711'
     },
     
 ]
-
-
-
 
 const table = document.createElement("table");
 document.body.appendChild(table);
@@ -39,11 +36,22 @@ document.body.appendChild(table);
 const thead = document.createElement("thead");
 table.appendChild(thead);
 
-const colgroup = document.createElement("colgroup")
+const colgroup = document.createElement("colgroup");
+
 table.appendChild(colgroup);
 
-const col = document.createElement("col");
-colgroup.appendChild(col);
+const col1 = document.createElement("col");
+col1.span = 1;
+col1.classList.add("colored-column");
+colgroup.appendChild(col1);
+
+const col2 = document.createElement("col");
+colgroup.appendChild(col2);
+
+const col3 = document.createElement("col");
+col3.span = 1;
+col3.classList.add("colored-column");
+colgroup.appendChild(col3);
 
 const Headertr = document.createElement("tr");
 thead.appendChild(Headertr);
@@ -77,40 +85,25 @@ for (person of array){
     tdesemeny1.innerHTML = person.esemeny1;
     TBodytr.appendChild(tdesemeny1);
 
-    if(person.esemeny2 === undefined){
-        tduralkodo.rowSpan = 2;
-    }
-
-    /*
-    const tduralkodo = document.createElement("td");
-    tduralkodo.innerHTML = person.uralkodo;
-    TBodytr.appendChild(tduralkodo);
-
-    const tdesemeny = document.createElement("td");
-    tdesemeny.innerHTML = person.esemeny1;
-    TBodytr.appendChild(tdesemeny);
-
-    if(person.esemeny2 !== undefined){
-        tduralkodo.rowSpan = 2;
-    }
-    else{
-        const tdesemeny2 = document.createElement("td");
-        tdesemeny.innerHTML = person.esemeny2;
-        TBodytr.appendChild(tdesemeny2);
-    }
-
     const tdevszam = document.createElement("td");
     tdevszam.innerHTML = person.evszam1;
     TBodytr.appendChild(tdevszam);
 
-    if(person.evszam2 === undefined){
+    if(person.esemeny2 !== undefined){
+        const TBodytr = document.createElement("tr");
+        tbody.appendChild(TBodytr);
+
         tduralkodo.rowSpan = 2;
-    }
-    else{
+
+        const tdesemeny2 = document.createElement("td");
+        tdesemeny2.innerHTML = person.esemeny2;
+        TBodytr.appendChild(tdesemeny2);
+
         const tdevszam2 = document.createElement("td");
-        tdevszam.innerHTML = person.evszam2;
+        tdevszam2.innerHTML = person.evszam2;
         TBodytr.appendChild(tdevszam2);
-        */
     }
+
+}
     
 
