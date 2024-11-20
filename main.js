@@ -71,68 +71,72 @@ Headertr.appendChild(HeaderthEvszam);
 const tbody = document.createElement("tbody");
 table.appendChild(tbody);
 
+RenderTable();
+function RenderTable(){
+    for (person of array){
 
-for (person of array){
-
-    const TBodytr = document.createElement("tr");
-    tbody.appendChild(TBodytr);
-
-    const tduralkodo = document.createElement("td");
-    tduralkodo.innerHTML = person.uralkodo;
-    TBodytr.appendChild(tduralkodo);
-
-    const tdesemeny1 = document.createElement("td");
-    tdesemeny1.innerHTML = person.esemeny1;
-    TBodytr.appendChild(tdesemeny1);
-
-    const tdevszam = document.createElement("td");
-    tdevszam.innerHTML = person.evszam1;
-    TBodytr.appendChild(tdevszam);
-
-    if(person.esemeny2 !== undefined){
         const TBodytr = document.createElement("tr");
         tbody.appendChild(TBodytr);
-
-        tduralkodo.rowSpan = 2;
-
-        const tdesemeny2 = document.createElement("td");
-        tdesemeny2.innerHTML = person.esemeny2;
-        TBodytr.appendChild(tdesemeny2);
-
-        const tdevszam2 = document.createElement("td");
-        tdevszam2.innerHTML = person.evszam2;
-        TBodytr.appendChild(tdevszam2);
+    
+        const tduralkodo = document.createElement("td");
+        tduralkodo.innerHTML = person.uralkodo;
+        TBodytr.appendChild(tduralkodo);
+    
+        const tdesemeny1 = document.createElement("td");
+        tdesemeny1.innerHTML = person.esemeny1;
+        TBodytr.appendChild(tdesemeny1);
+    
+        const tdevszam = document.createElement("td");
+        tdevszam.innerHTML = person.evszam1;
+        TBodytr.appendChild(tdevszam);
+    
+        if(person.esemeny2 !== undefined){
+            const TBodytr = document.createElement("tr");
+            tbody.appendChild(TBodytr);
+    
+            tduralkodo.rowSpan = 2;
+    
+            const tdesemeny2 = document.createElement("td");
+            tdesemeny2.innerHTML = person.esemeny2;
+            TBodytr.appendChild(tdesemeny2);
+    
+            const tdevszam2 = document.createElement("td");
+            tdevszam2.innerHTML = person.evszam2;
+            TBodytr.appendChild(tdevszam2);
+        }
     }
+    
+    const form = document.getElementById("form");
+    
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+    
+        const uralkodo = document.getElementById("uralkodo_nev");
+        const esemeny1 = document.getElementById("esemeny1");
+        const evszam1 = document.getElementById("evszam1");
+        const esemeny2 = document.getElementById("esemeny2");
+        const evszam2 = document.getElementById("evszam2");
+    
+        const uralkododValue = uralkodo.value;
+        const esemeny1Value = esemeny1.value;
+        const evszam1Value = evszam1.value;
+        const esemeny2Value = esemeny2.value;
+        const evszam2Value = evszam2.value;
+        
+        array.push({
+            uralkodo: uralkododValue,
+            esemeny1: esemeny1Value,
+            evszam1: evszam1Value,
+            esemeny2: esemeny2Value === ''?undefined:esemeny2Value,
+            evszam2: evszam2Value === ''?undefined:evszam2Value,
+        })
+    
+        console.log(array);
+    
+    })
 }
 
-const form = document.getElementById("form");
 
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    const uralkodo = document.getElementById("uralkodo_nev");
-    const esemeny1 = document.getElementById("esemeny1");
-    const evszam1 = document.getElementById("evszam1");
-    const esemeny2 = document.getElementById("esemeny2");
-    const evszam2 = document.getElementById("evszam2");
-
-    const uralkododValue = uralkodo.value;
-    const esemeny1Value = esemeny1.value;
-    const evszam1Value = evszam1.value;
-    const esemeny2Value = esemeny2.value;
-    const evszam2Value = evszam2.value;
-    
-    array.push({
-        uralkodo: uralkododValue,
-        esemeny1: esemeny1Value,
-        evszam1: evszam1Value,
-        esemeny2: esemeny2Value === ''?undefined:esemeny2Value,
-        evszam2: evszam2Value === ''?undefined:evszam2Value,
-    })
-
-    console.log(array);
-
-})
 
 
 
