@@ -1,4 +1,4 @@
-const array = [
+let array = [
     {
         uralkodo: 'I. István',
         esemeny1: 'Koronázás',
@@ -71,7 +71,6 @@ Headertr.appendChild(HeaderthEvszam);
 const tbody = document.createElement("tbody");
 table.appendChild(tbody);
 
-RenderTable();
 function RenderTable(){
     for (person of array){
 
@@ -105,12 +104,14 @@ function RenderTable(){
             TBodytr.appendChild(tdevszam2);
         }
     }
+}
     
     const form = document.getElementById("form");
     
     form.addEventListener('submit', function(e){
+        
         e.preventDefault();
-    
+        
         const uralkodo = document.getElementById("uralkodo_nev");
         const esemeny1 = document.getElementById("esemeny1");
         const evszam1 = document.getElementById("evszam1");
@@ -120,23 +121,57 @@ function RenderTable(){
         const uralkododValue = uralkodo.value;
         const esemeny1Value = esemeny1.value;
         const evszam1Value = evszam1.value;
-        const esemeny2Value = esemeny2.value;
-        const evszam2Value = evszam2.value;
+        let esemeny2Value = esemeny2.value;
+        let evszam2Value = evszam2.value;
         
-        array.push({
-            uralkodo: uralkododValue,
-            esemeny1: esemeny1Value,
-            evszam1: evszam1Value,
-            esemeny2: esemeny2Value === ''?undefined:esemeny2Value,
-            evszam2: evszam2Value === ''?undefined:evszam2Value,
-        })
-    
+        if(Validate(uralkodo, esemeny1, evszam1)){
+            array.push({
+                uralkodo: uralkododValue,
+                esemeny1: esemeny1Value,
+                evszam1: evszam1Value,
+                esemeny2: esemeny2Value === ''?undefined:esemeny2Value,
+                evszam2: evszam2Value === ''?undefined:evszam2Value,
+            })
+        }
+
+        
+        tbody.innerHTML = '';
         console.log(array);
+        RenderTable();
     
     })
+
+
+function Validate(uralkodo, esemeny1, esemeny2){
+    let result = true;
+
+    const errorMessages = form.querySelectorAll(".error");
+    for (const error of errorMessages){
+        error.innerHTML = "";
+    }
+
+    if(uralkodo.value === ""){
+        const error = uralkodo.parentElement.querySelector(".error");
+        error.innerHTML = "Uralkodó kötelező";
+        result = false;
+    }
+
+    if(esemeny1.value === ""){
+        const error = esemeny1.parentElement.querySelector(".error");
+        error.innerHTML = "Esemény kötelező";
+        result = false;
+    }
+
+    if(evszam1.value === ""){
+        const error = evszam1.parentElement.querySelector(".error");
+        error.innerHTML = "Évszám kötelező";
+        result = false;
+    }
+
+    return result;
 }
 
-
+RenderTable();
 
 
 
