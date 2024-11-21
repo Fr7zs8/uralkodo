@@ -138,9 +138,13 @@ function RenderTable(){
         tbody.innerHTML = '';
         console.log(array);
         RenderTable();
+
+        const form = e.currentTarget;
+        form.reset();
+
     
     })
-
+    
 
 function Validate(uralkodo, esemeny1, evszam1, esemeny2, evszam2){
     let result = true;
@@ -168,14 +172,18 @@ function Validate(uralkodo, esemeny1, evszam1, esemeny2, evszam2){
         result = false;
     }
     if(esemeny2.value === ""){
-        const error = esemeny2.parentElement.querySelector(".error");
+        const error = evszam2.parentElement.querySelector(".error");
         error.innerHTML = "Minden eseményhez kell tartoznia évszámnak!";
         result = false;
     }
+    
     if(evszam2.value === ""){
-        const error =  evszam2.parentElement.querySelector(".error");
+        const error =  esemeny2.parentElement.querySelector(".error");
         error.innerHTML = "Minden eseményhez kell tartoznia évszámnak!";
         result = false;
+    }
+    else{
+        result = true;
     }
 
     return result;
