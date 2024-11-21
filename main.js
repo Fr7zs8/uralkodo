@@ -124,7 +124,7 @@ function RenderTable(){
         let esemeny2Value = esemeny2.value;
         let evszam2Value = evszam2.value;
         
-        if(Validate(uralkodo, esemeny1, evszam1)){
+        if(Validate(uralkodo, esemeny1, evszam1, esemeny2, evszam2)){
             array.push({
                 uralkodo: uralkododValue,
                 esemeny1: esemeny1Value,
@@ -142,7 +142,7 @@ function RenderTable(){
     })
 
 
-function Validate(uralkodo, esemeny1, esemeny2){
+function Validate(uralkodo, esemeny1, evszam1, esemeny2, evszam2){
     let result = true;
 
     const errorMessages = form.querySelectorAll(".error");
@@ -165,6 +165,16 @@ function Validate(uralkodo, esemeny1, esemeny2){
     if(evszam1.value === ""){
         const error = evszam1.parentElement.querySelector(".error");
         error.innerHTML = "Évszám kötelező";
+        result = false;
+    }
+    if(esemeny2.value === ""){
+        const error = esemeny2.parentElement.querySelector(".error");
+        error.innerHTML = "Minden eseményhez kell tartoznia évszámnak!";
+        result = false;
+    }
+    if(evszam2.value === ""){
+        const error =  evszam2.parentElement.querySelector(".error");
+        error.innerHTML = "Minden eseményhez kell tartoznia évszámnak!";
         result = false;
     }
 
